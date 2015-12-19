@@ -1,0 +1,14 @@
+setwd("C:/Documents and Settings/Administrator/×ÀÃæ/specdata")
+getwd()
+
+pollutantmean <- function(directory, pollutant, id = 1:332){
+  file_list <- list.files(directory, full.names = TRUE)
+  combine_file<-data.frame()
+  for(i in id){
+    combine_file<-rbind(combine_file,read.csv(file_list[i],header = TRUE))
+    
+  }
+  mean(combine_file[,pollutant],na.rm = TRUE)
+}
+
+pollutantmean.R = paste("specdata", "/", formatC(i, width = 3, flag = "0"), ".csv", sep="")
